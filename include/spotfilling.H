@@ -5,16 +5,19 @@
  * supposed to simulate the increased ionization from a substorm.             *
  ******************************************************************************/
 
+#include "../submodules/include/dgcpm.H"
+#include "../submodules/include/aTime.H"
+
 class SPOTFILLING: public FILLING{
 public:
   SPOTFILLING(float fmax=2e12, float tauclosed=86400, float tauopen=86400);
   ~SPOTFILLING();
-  vois setSpot(double tstart, double tend, float t, float p, float r, float f);
-  void setTime(double time=0);
+  void setSpot(aTime tstart, aTime tend, float t, float p, float r, float f);
+  void setTime(aTime time);
   void filling(std::vector<float> &vR, std::vector<float> &vT, 
 	       std::vector<float> &vP, GRID &mGridN, GRID &mGridDen,
 	       GRID &mGridVol, GRID &mGridOc, GRID &mGridBi, float dt);
 private:
-  double t,tStart,tEnd;
+  aTime t,tStart,tEnd;
   float tCenter,pCenter,R,f;
 };
