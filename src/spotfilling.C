@@ -85,6 +85,7 @@ void SPOTFILLING::filling(std::vector<float> &vR, std::vector<float> &vT,
 	r=sqrt(dT*dT+dP*dP);
 	// Compute a Gaussian based on the radial distance. 
 	if(r<R){
+	  std::cout << "spot filling" << std::endl;
 	  flux=(sSat-mGridDen[iP][iT])/sSat*sFMax;
 	  mGridN[iP][iT]+=flux*dt/mGridBi[iP][iT];
 	  mGridDen[iP][iT]=mGridN[iP][iT]/mGridVol[iP][iT];
