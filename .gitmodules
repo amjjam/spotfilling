@@ -1,3 +1,9 @@
 [submodule "submodules/dgcpm"]
 	path = submodules/dgcpm
 	url = https://amj@amj.git.cloudforge.com/dgcpm.git
+[submodule "submodules/atime"]
+	path = submodules/atime
+	url = https://github.com/amjjam/atime.git
+[submodule "submodules/kp"]
+	path = submodules/kp
+	url = https://github.com/amjjam/kp.git
