@@ -61,7 +61,15 @@ void SPOTFILLING::filling(std::vector<float> &vR, std::vector<float> &vT,
 			  float dt){
   FILLING::filling(vR,vT,vP,mGridN,mGridDen,mGridVol,mGridOc,mGridBi,dt);
   
+  double t1,t2,t3;
+  t1=tStart.get();
+  t2=t.get();
+  t3=tEnd.get();
+  
+  std::cout << t1 << " " << t2 << " " << t3 << std::endl;
+
   if(tStart<=t&&t<=tEnd){
+    std::cout << "In spot time interval" << std::endl;
     // Convert latitude into radius
     float dSat=(*saturation)(1/sin(tCenter/180*M_PI)/sin(tCenter/180*M_PI));
     float sSat=f*dSat;
