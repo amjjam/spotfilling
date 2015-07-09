@@ -8,5 +8,6 @@ install:
 
 clean:
 	$(MAKE) -C src clean
+	$(MAKE) -C submodules uninstall
 
 uninstall:
