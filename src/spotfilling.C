@@ -32,9 +32,9 @@ void SPOTFILLING::setSpot(aTime tStart, aTime tEnd, float t, float p,
 			  float r, float f){
   SPOTFILLING::tStart=tStart;
   SPOTFILLING::tEnd=tEnd;
-  SPOTFILLING::tCenter=tCenter;
-  SPOTFILLING::pCenter=pCenter;
-  SPOTFILLING::R=r;
+  tCenter=t;
+  pCenter=p;
+  R=r;
   SPOTFILLING::f=f;
 }
 
@@ -61,15 +61,8 @@ void SPOTFILLING::filling(std::vector<float> &vR, std::vector<float> &vT,
 			  float dt){
   FILLING::filling(vR,vT,vP,mGridN,mGridDen,mGridVol,mGridOc,mGridBi,dt);
   
-  double t1,t2,t3;
-  t1=tStart.get();
-  t2=t.get();
-  t3=tEnd.get();
-  
-  //std::cout << t1 << " " << t2 << " " << t3 << std::endl;
-
   if(tStart<=t&&t<=tEnd){
-    //std::cout << "In spot time interval" << std::endl;
+    std::cout << "In spot time interval" << std::endl;
     // Convert latitude into radius
     float dSat=(*saturation)(1/sin(tCenter/180*M_PI)/sin(tCenter/180*M_PI));
     float sSat=f*dSat;
@@ -80,6 +73,7 @@ void SPOTFILLING::filling(std::vector<float> &vR, std::vector<float> &vT,
     float dT,dP;
     float RE=6400;
     float flux;
+    //std::cout << tCenter << " " << pCenter << " " << R << std::endl;
     for(iT=0;iT<nT;iT++)
       for(iP=0;iP<nP;iP++){
 	// Compute radial distance from center
@@ -88,12 +82,12 @@ void SPOTFILLING::filling(std::vector<float> &vR, std::vector<float> &vT,
 	if(dP>180)
 	  dP-=360;
 	if(dP<-180)
-	  dP+=180;
+	  dP+=360;
 	dP=dP/180*M_PI*RE*sin(vT[iT]/180*M_PI);
 	r=sqrt(dT*dT+dP*dP);
+	//std::cout << dT << " " << dP << " " << r << " " << R << std::endl;
 	// Compute a Gaussian based on the radial distance. 
 	if(r<R){
-	  std::cout << "spot filling" << std::endl;
 	  flux=(sSat-mGridDen[iP][iT])/sSat*sFMax;
 	  mGridN[iP][iT]+=flux*dt/mGridBi[iP][iT];
 	  mGridDen[iP][iT]=mGridN[iP][iT]/mGridVol[iP][iT];

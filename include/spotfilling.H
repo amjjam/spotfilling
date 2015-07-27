@@ -14,7 +14,7 @@ public:
   ~SPOTFILLING();
   void setSpot(aTime tstart, aTime tend, float t, float p, float r, float f);
   void setTime(aTime time);
-  void filling(std::vector<float> &vR, std::vector<float> &vT, 
+  virtual void filling(std::vector<float> &vR, std::vector<float> &vT, 
 	       std::vector<float> &vP, GRID &mGridN, GRID &mGridDen,
 	       GRID &mGridVol, GRID &mGridOc, GRID &mGridBi, float dt);
 private:
