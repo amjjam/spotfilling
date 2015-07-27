@@ -171,9 +171,11 @@ int main(int argc, char *argv[]){
   // Loop over time
   aTime t=tStart;
   aTime tNext=tStart;
+  aTime tFilling=tStart;
   for(;tNext<=tStop;){
     // Set the time for the filling function
     f->setTime(t);
+    tFilling+=300;
 
     if(tNext-t>0){
       std::cout << tNext-t << std::endl;
@@ -212,6 +214,8 @@ int main(int argc, char *argv[]){
       tNext=tWriteState;
     if(tKp<tNext)
       tNext=tKp;
+    if(tFilling<tNext)
+      tNext=tFilling;
   }
   
   if(filling==1)
