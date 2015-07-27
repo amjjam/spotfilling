@@ -66,10 +66,10 @@ void SPOTFILLING::filling(std::vector<float> &vR, std::vector<float> &vT,
   t2=t.get();
   t3=tEnd.get();
   
-  std::cout << t1 << " " << t2 << " " << t3 << std::endl;
+  //std::cout << t1 << " " << t2 << " " << t3 << std::endl;
 
   if(tStart<=t&&t<=tEnd){
-    std::cout << "In spot time interval" << std::endl;
+    //std::cout << "In spot time interval" << std::endl;
     // Convert latitude into radius
     float dSat=(*saturation)(1/sin(tCenter/180*M_PI)/sin(tCenter/180*M_PI));
     float sSat=f*dSat;
