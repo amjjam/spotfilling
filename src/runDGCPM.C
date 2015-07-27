@@ -133,7 +133,7 @@ int main(int argc, char *argv[]){
     aTime sStart,sStop;
     sStart=tStart;
     sStart+=sStartDt;
-    sStop=tStop;
+    sStop=tStart;
     sStop+=sStopDt;
     f->setSpot(sStart,sStop,sT,sP,sR,sF);
   }
